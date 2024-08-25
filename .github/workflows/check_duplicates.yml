@@ -1,0 +1,22 @@
+name: Check CSV Duplicates
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-duplicates:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: チェックアウトリポジトリ
+      uses: actions/checkout@v2
+
+    - name: 重複チェックスクリプトの実行
+      run: |
+        chmod +x check_duplicates.sh
+        ./check_duplicates.sh
